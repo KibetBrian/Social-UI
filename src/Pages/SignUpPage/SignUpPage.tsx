@@ -1,9 +1,17 @@
-import "./signInPage.scss";
+import './signUpPage.scss';
 import { VscArrowRight } from 'react-icons/vsc'
+import { Link } from 'react-router-dom';
+import GoogleButton from '../../Components/GoogleButton/GoogleButton';
 
-const SignInPage = () => {
+const SignUpPage = () => {
+
+  const handleGoogleLogin = ()=>
+  {
+      window.open('http://localhost:8080/auth/google', '_self')
+  }
+
   return (
-    <div className="signInPage">
+    <div className="signUpPage">
       <div className="containerWrapper">
           <div className="left">
               <div className="top">
@@ -14,7 +22,7 @@ const SignInPage = () => {
                 <img src="/Assets/progress.svg" alt="" />
                 <div className="signRe">
                   <p>Already have an account ?</p>
-                  <h6>Sign In</h6>
+                     <h6><Link to={'/sign-in'}>Sign In</Link></h6>
                 </div>
               </div>
           </div>
@@ -23,27 +31,18 @@ const SignInPage = () => {
                 <h2>Sign Up</h2>
                 <form>
                     <label htmlFor="emailInput">Email Address</label>
-                    <input className="userInput" placeholder="Enter your email" type="email" required = {true} name="emailInput"/>
+                    <input required = {true} className="userInput" placeholder="Enter your email" type="email"  name="emailInput"/>
                     <label htmlFor="password">Set Password</label>
-                    <input className="userInput" placeholder="Enter your password" type="password" required = {true} name="password"/>
+                    <input pattern="^(.{0,7}|[^a-z]{1,}|[^A-Z]{1,}|[^\d]{1,}|[^\W]{1,})$|[\s]" required = {true} className="userInput" placeholder="Enter your password" type="password"name="password"/>
                     <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input className="userInput" placeholder="Confirm Password" type="password" required = {true} name="confirmPassword"/>
+                    <input pattern="^(.{0,7}|[^a-z]{1,}|[^A-Z]{1,}|[^\d]{1,}|[^\W]{1,})$|[\s]" required= {true}  className="userInput" placeholder="Confirm Password" type="password" name="confirmPassword"/>
                     <div className="checkBox">
                       <input type="checkbox" name="checkbox" />
                       <label htmlFor="checkbox">Show Password</label>
                     </div>
-                    <button className="signInButton" type="submit">Sign Up<VscArrowRight className="arrowRight" /></button>
+                    <button  className="signUpButton" type="submit">Sign Up<VscArrowRight className="arrowRight" /></button>
                 </form>
-                <div className="orContainer">
-                  <div className="left"></div>
-                  <p>or</p>
-                  <div className="right"></div>
-                </div>
-                <div className="googleContainer">
-                  <button>
-                    <img src="/Assets/google_logo.png" alt="logo" />
-                    Continue with Google</button>
-                </div>
+              <GoogleButton onClick={handleGoogleLogin}/>
             </div>
           </div>
       </div>
@@ -51,4 +50,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default SignUpPage;
