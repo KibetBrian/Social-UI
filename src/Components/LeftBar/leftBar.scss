@@ -1,4 +1,72 @@
-.left_bar
-{
-    flex: 2;
+@import "../../global.scss";
+.left_bar {
+  flex: 2;
+  padding-left: 20px;
+  padding-right: 10px;
+  height: calc(100vh - 70px);
+  position: sticky;
+  left: 0;
+  top: 70px;
+  .left_bar_top {
+    .left_bar_item {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 7px;
+      cursor: pointer;
+      p {
+        color: #7a8895;
+      }
+      .icon {
+        color: #637381;
+        font-size: 25px;
+        margin-right: 10px;
+        margin-left: 20px;
+      }
+
+      &.active {
+        background-color: #f2f3f5;
+        .icon {
+          color: $secondaryColor;
+        }
+        p {
+          color: $secondaryColor;
+        }
+      }
+      &:hover {
+        background-color: #f2f3f5;
+      }
+    }
+  }
+  .hr 
+  {
+      height: 1px;
+      width: 100%;
+      background-color: #F3F1F5;
+  }
+  .left_bar_bottom {
+    span {
+      color: $secondaryColor;
+      font-size: 25px;
+    }
+    .close_traders_container {
+      .each_trader {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+        cursor: pointer;
+        img {
+          object-fit: cover;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+        p {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
 }

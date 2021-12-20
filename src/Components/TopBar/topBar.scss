@@ -5,13 +5,21 @@
     display: flex;
     flex-direction: row;
     background-color: $primaryColor;
-
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    left: 0;
     .left_top_bar
     {
         display: flex;
         align-items: center;
         justify-content: center;
         flex: 2;
+        .logo_name{
+            font-size: 20px;
+            color: #fff;
+            margin-left: 10px;
+        }
         .logoContainer
         {
             height: 60px;
@@ -33,7 +41,7 @@
     }
     .center_top_bar
     {
-        flex: 5;
+        flex: 4;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -67,7 +75,7 @@
     }
     .right_top_bar
     {
-        flex: 3;
+        flex: 2;
         display: flex;
         align-items: center;
 

@@ -9,6 +9,7 @@ const TopBar = () => {
                 <div className="logoContainer">
                     <img src="/Assets/tradisfin_block_logo.png" alt="Tradisfin" />
                 </div>
+                <p className='logo_name'>Tradisfin</p>
             </div>
             <div className="center_top_bar">
                 <div className="inputContainer">
