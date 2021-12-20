@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     flex-direction: row;
+    overflow: hidden;
 
     .left
     {
@@ -92,9 +93,11 @@
             }
             .warningBar
             {
-                visibility: hidden;
+                position: absolute;
+                right: 16%;
+                top: 16%;
                 height: 50px;
-                width: 100%;
+                width: 30%;
                 background-color: #ef9a9a;
                 border-radius: 7px;
                 margin-top: 50px;
@@ -116,15 +119,6 @@
                     visibility: visible;
                 }
             }
-            .MuiOutlinedInput-root
-            {
-                border-radius: 7px;
-            }
-            .MuiCheckbox-root
-            {
-                border-radius: 50%;
-            }
-          
            .checkBox
            {
                display: flex;
@@ -136,10 +130,14 @@
                {
                    span 
                    {
-                       color: #1976d2;
+                       color: #76abe0;
                        cursor: pointer;
                    }
                }
+           }
+           .signInButton 
+           {
+               margin-top: 15px;
            }
         }
     }

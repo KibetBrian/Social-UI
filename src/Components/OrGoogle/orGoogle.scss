@@ -1,10 +1,10 @@
-.orContainer {
+._orContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 30px;
     margin: 0.5rem 0;
-    .left {
+    ._left {
       height: 2px;
       width: 30%;
       background-color: #e0e0e0;
@@ -12,7 +12,7 @@
     p {
       padding: 0 30px;
     }
-    .right {
+    ._right {
       height: 2px;
       width: 30%;
       background-color: #e0e0e0;

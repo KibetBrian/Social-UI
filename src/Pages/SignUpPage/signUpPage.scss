@@ -5,31 +5,50 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: $mainThemeColor;
-  font-family: $fontFamily;
+  overflow: hidden;
 
   .containerWrapper {
-    width: 90%;
-    height: 90%;
-    border-radius: 30px;
+    width: 100vw;
+    height: 100vh;
     box-shadow: 0px 0px 9px -3px rgba(55, 98, 255, 0.75);
     -webkit-box-shadow: 0px 0px 9px -3px rgba(55, 98, 255, 0.75);
     -moz-box-shadow: 0px 0px 9px -3px rgba(55, 98, 255, 0.75);
     background-color: $whiteColor;
     display: flex;
+    align-items: center;
 
     .left {
-      flex: 0.5;
+      margin-left: 30px;
+      border-radius:15px;
+      height: 95vh;
+      padding-left: 50px;
+      flex: 0.42;
       display: flex;
       flex-direction: column;
+      box-shadow: 0px 0px 7px 2px rgba(228,230,231,0.75);
+      -webkit-box-shadow: 0px 0px 7px 2px rgba(228,230,231,0.75);
+      -moz-box-shadow: 0px 0px 7px 2px rgba(228,230,231,0.75);
+
       .top {
         flex: 0.2;
         display: flex;
         align-items: center;
         flex-direction: column;
         padding-top: 2rem;
-        h1 {
-          color: #3f3d56;
+        .logoContainer
+        {
+          display: flex;
+          align-items: center;
+          
+          h1 {
+            color: #3f3d56;
+            font-size: 32px;
+          }
+          img 
+          {
+            height: 60%;
+            margin-left: 10px;
+          }
         }
         p {
           margin: 0.5rem 0;
@@ -45,7 +64,7 @@
           padding: 0 3rem;
           h6 {
             font-size: 16px;
-            color: $mainThemeColor;
+            color: $primaryColor;
             cursor: pointer;
             .link
             {
@@ -60,13 +79,14 @@
       }
     }
     .right {
-      flex: 0.5;
+      flex: 0.6;
+      padding-left: 60px;
       .formContainer {
-        padding: 2rem 5rem;
+        padding: 1rem 5rem;
         display: flex;
         flex-direction: column;
         h2 {
-          font-size: 26px;
+          font-size: 32px;
           margin-bottom: 1rem;
           color: #3f3d56;
         }
@@ -81,30 +101,32 @@
             color: #3f3d56;
           }
           .userInput {
-            height: 45px;
+            height: 50px;
             border-radius: 3px;
             border: 1px solid #e0e0e0;
             padding-left: 10px;
             border-radius: 7px;
             margin-bottom: 1rem;
           }
-          .checkBox {
-            margin: 0.5rem 0;
-            height: 15px;
-            display: flex;
-            align-items: center;
-            label {
-              font-weight: normal;
-            }
+          .checkBox
+          {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin: 10px 0;
 
-            input {
-              margin-right: 7px;
-              border: 1px solid #e0e0e0;
-            }
+              .checkBoxRight 
+              {
+                  span 
+                  {
+                      color: #1976d2;
+                      cursor: pointer;
+                  }
+              }
           }
           .signUpButton {
-            height: 45px;
-            background-color: $mainThemeColor;
+            height: 50px;
+            background-color: $primaryColor;
             display: flex;
             align-items: center;
             justify-content: center;

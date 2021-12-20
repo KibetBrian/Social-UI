@@ -1,10 +1,10 @@
 import './orGoogle.scss';
 const OrGoogle = () => {
     return (
-        <div className="orContainer">
-                  <div className="left"></div>
+        <div className="_orContainer">
+                  <div className="_left"></div>
                   <p>or</p>
-                  <div className="right"></div>
+                  <div className="_right"></div>
                 </div>
     )
 }
