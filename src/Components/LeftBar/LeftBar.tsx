@@ -2,18 +2,22 @@ import './leftBar.scss'
 import {MdOutlineDynamicFeed} from 'react-icons/md'
 import {BsFillEyeFill}from 'react-icons/bs'
 import {MdForum} from 'react-icons/md'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {AiOutlineUsergroupAdd} from 'react-icons/ai'
-import {GrLineChart} from 'react-icons/gr';
 import {MdTimeline} from 'react-icons/md'
+import {useDispatch, useSelector} from 'react-redux'
+import { RootState, AppDispatch } from '../../Redux/store'
+import { changeItem } from '../../Redux/Slices/itemActive'
 const LeftBar = () => {
+    
+    const dispatch :AppDispatch = useDispatch ();
 
-    const [clicked, setClicked] = useState(1);
-
-    const handleClick = ()=>
-    {
-        console.log('clicked')
-    }
+    const itemClicked = useSelector((state: RootState)=>state.itemActive);
+    const [clicked, setClicked] = useState(itemClicked);
+    
+    useEffect(()=>{
+        dispatch(changeItem(clicked));
+    },[clicked, dispatch]);   
     return (
         <div className="left_bar">
 

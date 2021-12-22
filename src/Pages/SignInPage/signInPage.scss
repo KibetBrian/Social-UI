@@ -1,144 +1,157 @@
-@import '../../global.scss';
+@import "../../global.scss";
 
-.signInPage
-{
-    width: 100vw;
-    height: 100vh;
+.signInPage {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: #fafafa;
+
+  .left {
+    margin-left: 30px;
+    border-radius: 15px;
+    height: 95vh;
+    padding-left: 50px;
+    flex: 0.42;
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    overflow: hidden;
+    background-color: #fff;
+    flex-direction: column;
+    box-shadow: 0px 0px 7px 2px rgba(228, 230, 231, 0.75);
+    -webkit-box-shadow: 0px 0px 7px 2px rgba(228, 230, 231, 0.75);
+    -moz-box-shadow: 0px 0px 7px 2px rgba(228, 230, 231, 0.75);
+    .logo {
+      flex: 0.2;
+      height: 100px;
+      width: 100px;
+      cursor: pointer;
+    }
+    h1 {
+      flex: 0.1;
+      font-size: 32px;
+      line-height: 48px;
+      font-weight: 700;
+      color: rgb(33, 43, 54);
+    }
+    .illustration {
+      flex: 0.7;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .right {
+    flex: 0.62;
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+    height: 100%;
 
-    .left
-    {
-        margin-left: 30px;
-        border-radius:15px;
-        height: 95vh;
-        padding-left: 50px;
-        flex: 0.42;
+    .top {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+
+      p {
+        margin-right: 50px;
+        font-size: 14px;
+        line-height: 22px;
+        span {
+          font-weight: 600;
+          color: $primaryColor;
+          cursor: pointer;
+
+          .link {
+            text-decoration: none;
+            color: inherit;
+          }
+        }
+      }
+    }
+    .bottom {
+      padding: 40px;
+      width: 70%;
+      h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: rgb(33, 43, 54);
+        line-height: 36px;
+      }
+      p {
+        line-height: 30px;
+        color: rgb(99, 115, 129);
+      }
+      .warningBar {
+        position: absolute;
+        right: 16%;
+        top: 16%;
+        height: 50px;
+        width: 30%;
+        background-color: #ef9a9a;
+        border-radius: 7px;
+        margin-top: 50px;
         display: flex;
-        flex-direction: column;
-        box-shadow: 0px 0px 7px 2px rgba(228,230,231,0.75);
-        -webkit-box-shadow: 0px 0px 7px 2px rgba(228,230,231,0.75);
-        -moz-box-shadow: 0px 0px 7px 2px rgba(228,230,231,0.75);
-        .logo
-        {
-            flex: 0.2;
-            height: 100px;
-            width: 100px;
+        align-items: center;
+        justify-content: center;
+        p {
+          color: #fff;
+          display: flex;
+          align-items: center;
+          .errorIcon {
+            margin-right: 10px;
+          }
+        }
+        &.error {
+          visibility: visible;
+        }
+      }
+      .checkBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 0;
+
+        .checkBoxRight {
+          span {
+            color: #76abe0;
             cursor: pointer;
+          }
         }
-        h1
-        {
-          flex: 0.1;
-          font-size: 32px;
-          line-height: 48px;
-          font-weight: 700;
-          color: rgb(33, 43, 54);
-        }
-        .illustration{
-            flex: 0.7;
-            width: 100%;
-            height: 100%;
-        }
-    }
-    .right
-    {
-        flex: 0.62;
+      }
+      form {
         display: flex;
         flex-direction: column;
-        padding-left: 100px;
-        height: 100%;
-        
-        .top 
-        {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 20px;
-
-
-            p 
-            {
-                margin-right: 50px;
-                font-size: 14px;
-                line-height: 22px;
-                span 
-                {
-                    font-weight: 600;
-                    color: $primaryColor;
-                    cursor: pointer;
-
-                    .link 
-                    {
-                        text-decoration: none;
-                        color: inherit;
-                    }
-                }
-            }
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        .loginInput {
+          height: 50px;
+          border: 1px solid gray;
+          border-radius: 7px;
+          padding-left: 10px;
+          margin: 15px 0;
+          &:focus {
+            outline: none;
+            border: 1px solid $primaryColor;
+            box-shadow: 0px 0px 0px 2px $primaryColor;
+            -webkit-box-shadow: 0px 0px 0px 2px $primaryColor;
+            -moz-box-shadow: 0px 0px 0px 2px $primaryColor;
+          }
         }
-        .bottom{
-            padding: 40px;
-            width: 70%;
-            h3 
-            {
-                font-size: 24px;
-                font-weight: 700;
-                color: rgb(33, 43, 54);
-                line-height: 36px;
-            }
-            p 
-            {
-                line-height: 30px;
-                color: rgb(99, 115, 129)
-            }
-            .warningBar
-            {
-                position: absolute;
-                right: 16%;
-                top: 16%;
-                height: 50px;
-                width: 30%;
-                background-color: #ef9a9a;
-                border-radius: 7px;
-                margin-top: 50px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                p 
-                {
-                color: #fff;
-                display: flex;
-                align-items: center;
-                .errorIcon 
-                {
-                    margin-right: 10px;
-                }
-                }
-                &.error
-                {
-                    visibility: visible;
-                }
-            }
-           .checkBox
-           {
-               display: flex;
-               align-items: center;
-               justify-content: space-between;
-               margin: 10px 0;
-
-               .checkBoxRight 
-               {
-                   span 
-                   {
-                       color: #76abe0;
-                       cursor: pointer;
-                   }
-               }
-           }
-           .signInButton 
-           {
-               margin-top: 15px;
-           }
+        .login_button {
+          height: 50px;
+          border-radius: 5px;
+          color: #fff;
+          background-color: $primaryColor;
+          border: none;
+          font-size: 16px;
+          font-weight: 500;
+          cursor: pointer;
         }
+      }
+      .signInButton {
+        margin-top: 15px;
+      }
     }
+  }
 }

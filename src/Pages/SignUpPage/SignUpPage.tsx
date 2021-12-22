@@ -44,7 +44,7 @@ const SignUpPage = () => {
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input pattern="^(.{0,7}|[^a-z]{1,}|[^A-Z]{1,}|[^\d]{1,}|[^\W]{1,})$|[\s]" required= {true}  className="userInput" placeholder="Confirm Password" type="password" name="confirmPassword"/>
                     <div className="checkBox">
-              <div className="checkBoxLeft">
+              <div className="checkBoxLeft"> 
                 <Checkbox
                   {...label}
                   sx={{
@@ -63,25 +63,10 @@ const SignUpPage = () => {
               <div className="checkBoxRight">
               </div>
             </div>
-            <Button
-            type="submit"
-              sx={{
-                width: "100%",
-                marginTop: "15px",
-                height: "50px",
-                borderRadius: "7px",
-                backgroundColor: "#1976d2",
-                textTransform: "inherit",
-                fontSize: "16px",
-                fontFamily: "inherit",
-              }}
-              variant="contained"
-            >
-              Sign Up
-            </Button>
-                </form>
+            <button type = "submit" style = {{width: '100%'}} className="sign_in_button">Sign In</button>
                 <OrGoogle />
-              <GoogleButton className='' onClick={handleGoogleLogin}/>
+              <GoogleButton className='swg_button' onClick={handleGoogleLogin}/>
+                </form>
             </div>
           </div>
       </div>
