@@ -12,7 +12,7 @@ const LeftBar = () => {
     
     const dispatch :AppDispatch = useDispatch ();
 
-    const itemClicked = useSelector((state: RootState)=>state.itemActive);
+    const itemClicked= useSelector((state: RootState)=>state.itemActive);
     const [clicked, setClicked] = useState(itemClicked);
     
     useEffect(()=>{

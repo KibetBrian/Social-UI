@@ -4,12 +4,14 @@ import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import SignInPage from './Pages/SignInPage/SignInPage'
 import HomePage from './Pages/HomePage/HomePage';
 import TopBar from './Components/TopBar/TopBar';
-function App() {
-  const [user, setUser] = useState(true);
+import { useSelector } from 'react-redux';
+import { RootState } from "./Redux/store";
+function App() {  
+  const user = useSelector((state:RootState)=>state.user).currentUser;
   return (
     <BrowserRouter>    
     <div className='app'>
-      <TopBar />
+     {user &&  <TopBar />}
       <Routes>
         <Route path = {'/'} element = {user ? <HomePage/>: <SignInPage />}/>
         <Route path = {'/sign-in'} element = {user ? <Navigate to = {'/'}/>: <SignInPage />} />

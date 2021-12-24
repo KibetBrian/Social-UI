@@ -1,13 +1,11 @@
-@import '../../global.scss';
-.right_bar
-{
-    flex: 2;
-    overflow-y: scroll;
+@import "../../global.scss";
+.right_bar {
+  flex: 2;
+  overflow-y: scroll;
 
-    .trending_title
-    {
-        color: $primaryColor;
+  .trending_title {
+    color: $primaryColor;
     text-align: center;
     margin-top: 20px;
-    }
+  }
 }

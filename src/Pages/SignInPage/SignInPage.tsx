@@ -7,43 +7,38 @@ import Checkbox from "@mui/material/Checkbox";
 import React from "react";
 import OrGoogle from "../../Components/OrGoogle/OrGoogle";
 import GoogleButton from "../../Components/GoogleButton/GoogleButton";
-import { State } from '../../interfaces';
-import {Errors} from '../../interfaces'
-import { CircularProgress } from '@mui/material';
+import { CircularProgress } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { handleSignInApiCall } from "../../apiCalls";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/store";
 
 const SignInPage = () => {
+  interface ISignInInput {
+    email: string;
+    password: string;
+  }
 
-  const [values, setValues] = React.useState<State>({
+  const user = useSelector((state: RootState)=>state.user);
+
+  const [values, setValues] = React.useState<ISignInInput>({
     email: "",
     password: "",
-    showPassword: false, 
   });
 
- 
+  const dispatch = useDispatch();
 
-  const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [prop]: event.target.value });
-      validateEmailAndPassword();
-    };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
 
-const [errors, setErrors] = useState<Errors>({
-  email: false,
-  password: false
-});
-
-const validateEmailAndPassword = ()=>{
-     
-  if(values.password.length<1)
-  {
-    setErrors({...errors, 'password': true});
-  }
-  else if (values.email.length<1)
-  {
-    setErrors({...errors,'email': true})
-  }
-
-}
+  const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleSignInApiCall(dispatch, {
+      email: values.email,
+      password: values.password,
+    });
+  };
 
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -73,9 +68,24 @@ const validateEmailAndPassword = ()=>{
         <div className="bottom">
           <h3>Sign in to Tradisfin</h3>
           <p>Enter you details below.</p>
-         <form>
-            <input type="email" onChange={handleChange('email')}   required placeholder = "Enter your email" className="loginInput"/>
-            <input type="password" required = {true} minLength={8} placeholder = "Password" className="loginInput" onChange={handleChange('password')}/>
+          <form onSubmit={handleSignIn}>
+            <input
+              type="email"
+              onChange={handleChange}
+              required
+              placeholder="Enter your email"
+              className="loginInput"
+              name="email"
+            />
+            <input
+              type="password"
+              required={true}
+              minLength={8}
+              placeholder="Password"
+              className="loginInput"
+              onChange={handleChange}
+              name="password"
+            />
             <div className="checkBox">
               <div className="checkBoxLeft">
                 <Checkbox
@@ -97,15 +107,23 @@ const validateEmailAndPassword = ()=>{
                 <span>Forgot Password ?</span>
               </div>
             </div>
-            <button type= "submit" className="login_button" disabled = {false}>{false ? <CircularProgress style= {{color: "#fff"}} />:"Sign In"}</button>
+            <button type="submit" className="login_button" disabled={false}>
+              {user.isFetching ? (
+                <CircularProgress style={{ color: "#fff" }} />
+              ) : (
+                "Sign In"
+              )}
+            </button>
             <OrGoogle />
-          <div className="signInButton">
-          <GoogleButton 
-              onClick={function (): void {
-                throw new Error("Function not implemented.");
-              } } className={""}          />
-          </div>
-            </form>
+            <div className="signInButton">
+              <GoogleButton
+                onClick={function (): void {
+                  throw new Error("Function not implemented.");
+                }}
+                className={""}
+              />
+            </div>
+          </form>
         </div>
       </div>
     </div>
