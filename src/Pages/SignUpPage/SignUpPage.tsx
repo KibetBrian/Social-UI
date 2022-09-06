@@ -5,13 +5,36 @@ import GoogleButton from '../../Components/GoogleButton/GoogleButton';
 import OrGoogle from '../../Components/OrGoogle/OrGoogle';
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
+import { handleSignInApiCall } from '../../apiCalls';
+import { useDispatch } from 'react-redux';
+import {useState} from 'react'
 
 const SignUpPage = () => {
+  const dispatch = useDispatch()
+
+  const [userInput, setUserInput] = useState<{email: string; password: string; confirmPassword: string}>({
+    email: '', password: '', confirmPassword: ''});
+;
+
+  const handleChange = (e: any)=>{
+    setUserInput(prev=>({...prev, [e.target.name]:e.target.value}));
+  }
+
+  const handleLogin =(e: any)=>{
+    e.preventDefault()
+    if (userInput.confirmPassword !== userInput.password){
+      //Error
+      return;
+    }
+    handleSignInApiCall(dispatch, userInput)
+  }
+
 
   const handleGoogleLogin = ()=>
   {
       window.open('http://localhost:8080/auth/google', '_self')
   }
+
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   return (
@@ -38,11 +61,11 @@ const SignUpPage = () => {
                 <h2>Sign Up</h2>
                 <form>
                     <label htmlFor="emailInput">Email Address</label>
-                    <input required = {true} className="userInput" placeholder="Enter your email" type="email"  name="emailInput"/>
+                    <input onChange={handleChange} required = {true} className="userInput" placeholder="Enter your email" type="email"  name="emailInput"/>
                     <label htmlFor="password">Set Password</label>
-                    <input pattern="^(.{0,7}|[^a-z]{1,}|[^A-Z]{1,}|[^\d]{1,}|[^\W]{1,})$|[\s]" required = {true} className="userInput" placeholder="Enter your password" type="password"name="password"/>
+                    <input onChange={handleChange} pattern="^(.{0,7}|[^a-z]{1,}|[^A-Z]{1,}|[^\d]{1,}|[^\W]{1,})$|[\s]" required = {true} className="userInput" placeholder="Enter your password" type="password"name="password"/>
                     <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input pattern="^(.{0,7}|[^a-z]{1,}|[^A-Z]{1,}|[^\d]{1,}|[^\W]{1,})$|[\s]" required= {true}  className="userInput" placeholder="Confirm Password" type="password" name="confirmPassword"/>
+                    <input onChange ={handleChange} pattern="^(.{0,7}|[^a-z]{1,}|[^A-Z]{1,}|[^\d]{1,}|[^\W]{1,})$|[\s]" required= {true}  className="userInput" placeholder="Confirm Password" type="password" name="confirmPassword"/>
                     <div className="checkBox">
               <div className="checkBoxLeft"> 
                 <Checkbox
@@ -63,7 +86,7 @@ const SignUpPage = () => {
               <div className="checkBoxRight">
               </div>
             </div>
-            <button type = "submit" style = {{width: '100%'}} className="sign_in_button">Sign In</button>
+            <button onClick ={handleLogin} type = "submit" style = {{width: '100%'}} className="sign_in_button">Sign In</button>
                 <OrGoogle />
               <GoogleButton className='swg_button' onClick={handleGoogleLogin}/>
                 </form>
